@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Friend from './Components/Friend';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 function App() {
   const [friends, setFriends] = useState([]);
