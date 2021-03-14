@@ -1,10 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Friend = (props) => {
     const { name, email, id } = props.friend;
 
-    const friendStyle={
+    const history = useHistory();
+    const anotherMethod = (friendId) => {
+        const url2 = `/friend/${friendId}`;
+        history.push(url2);
+    }
+    const friendStyle = {
         border: '2px solid gray',
         borderRadius: '20px',
         margin: '20px',
@@ -14,7 +19,12 @@ const Friend = (props) => {
         <div style={friendStyle}>
             <h4>Name: {name}</h4>
             <p>E-mail: {email}</p>
-            <Link to={`/friend/${id}`}>Details of {id}</Link>
+            {/* Using Link method */}
+            <Link to={`/friend/${id}`}>
+                <button>Show User Information</button>
+            </Link>
+            {/* Using useHistory method */}
+            <button onClick={() => anotherMethod(id)}>Another Method</button>
         </div>
     );
 };
